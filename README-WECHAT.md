@@ -36,6 +36,7 @@ CORP_ID, AGENT_ID and TO_PARTY via environment variables in `start.sh` later:
 ```bash
 $ git clone https://github.com/opera443399/swarmprom.git
 $ cd swarmprom
+$ git checkout -b feat-alertmanager-receiver-wechat remotes/origin/feat-alertmanager-receiver-wechat
 $ cat start.sh
 #!/bin/bash
 #
