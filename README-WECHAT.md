@@ -1,5 +1,5 @@
 # docker深入2-监控docker-swarm集群的方案swarmprom介绍
-2018/4/18
+2018/4/28
 
 
 ### 本文目的
@@ -14,13 +14,13 @@
 
 简而言之，该方案是以下工具的组合：
 
-> `caddy` 网关，提供了基础的认证功能
-> `grafana` 数据展示 `http://<swarm-ip>:3000`
-> `prometheus` 数据源 `http://<swarm-ip>:9090`
-> `alertmanager` 告警 `http://<swarm-ip>:9093`
-> `unsee` 告警看板 `http://<swarm-ip>:9094`
-> `cAdvisor` 容器 metrics 收集
-> `nodeExporter` 主机 metrics 收集
+* `caddy` 网关，提供了基础的认证功能
+* `grafana` 数据展示 `http://<swarm-ip>:3000`
+* `prometheus` 数据源 `http://<swarm-ip>:9090`
+* `alertmanager` 告警 `http://<swarm-ip>:9093`
+* `unsee` 告警看板 `http://<swarm-ip>:9094`
+* `cAdvisor` 容器 metrics 收集
+* `nodeExporter` 主机 metrics 收集
 
 
 
