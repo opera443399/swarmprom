@@ -1,3 +1,6 @@
+templates:
+  - templates/*.tmpl
+
 route:
   receiver: 'wechat'
 
@@ -5,7 +8,8 @@ receivers:
   - name: 'wechat'
     wechat_configs:
       - send_resolved: true
-        #api_secret: <api_secret>#
-        #corp_id: <corp_id>#
-        #agent_id: <agent_id>#
-        #to_party: <to_party>#
+        message: '{{ template "wechat.default.message" . }}'
+        api_secret: 'xxx'
+        corp_id: 'xxx'
+        agent_id: 'xxx'
+        to_party: 'xxx'

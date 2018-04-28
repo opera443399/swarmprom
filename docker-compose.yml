@@ -87,19 +87,13 @@ services:
           memory: 64M
 
   alertmanager:
-    image: opera443399/swarmprom-alertmanager:v0.14.0
+    image: prom/alertmanager:v0.14.0
     networks:
       - net
-    environment:
-      - API_SECRET=${API_SECRET}
-      - CORP_ID=${CORP_ID}
-      - AGENT_ID=${AGENT_ID}
-      - TO_PARTY=${TO_PARTY}
-    command:
-      - '--config.file=/etc/alertmanager/alertmanager.yml'
-      - '--storage.path=/alertmanager'
     volumes:
       - alertmanager:/alertmanager
+      - ./alertmanager/conf/alertmanager.yml:/etc/alertmanager/config.yml
+      - ./alertmanager/templates:/etc/alertmanager/templates
     deploy:
       mode: replicated
       replicas: 1
