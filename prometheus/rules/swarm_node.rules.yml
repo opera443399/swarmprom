@@ -1,9 +1,9 @@
 groups:
 - name: /1/store/projects/vagrant/docker-swarm-vagrant/apps/swarmprom/prometheus/rules/swarm_node.rules.yml
   rules:
-  - alert: node_cpu_usage
+  - alert: node_cpu_usage_80
     expr: 100 - (avg(irate(node_cpu{mode="idle"}[1m]) * ON(instance) GROUP_LEFT(node_name)
-      node_meta * 100) BY (node_name)) > 50
+      node_meta * 100) BY (node_name)) > 80
     for: 1m
     labels:
       severity: warning
@@ -11,7 +11,7 @@ groups:
       description: Swarm node {{ $labels.node_name }} CPU usage is at {{ humanize
         $value}}%.
       summary: CPU alert for Swarm node '{{ $labels.node_name }}'
-  - alert: node_memory_usage
+  - alert: node_memory_usage_80
     expr: sum(((node_memory_MemTotal - node_memory_MemAvailable) / node_memory_MemTotal)
       * ON(instance) GROUP_LEFT(node_name) node_meta * 100) BY (node_name) > 80
     for: 1m
@@ -21,7 +21,7 @@ groups:
       description: Swarm node {{ $labels.node_name }} memory usage is at {{ humanize
         $value}}%.
       summary: Memory alert for Swarm node '{{ $labels.node_name }}'
-  - alert: node_disk_usage
+  - alert: node_disk_usage_85
     expr: ((node_filesystem_size{mountpoint="/"} - node_filesystem_free{mountpoint="/"})
       * 100 / node_filesystem_size{mountpoint="/"}) * ON(instance) GROUP_LEFT(node_name)
       node_meta > 85
